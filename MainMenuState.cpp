@@ -13,7 +13,7 @@ MainMenuState::~MainMenuState()
 
 void MainMenuState::update(const float& dt)
 {
-	std::cout << "HELLO" << std::endl;
+	//std::cout << "Hello from main menu" << std::endl;
 }
 
 void MainMenuState::render(sf::RenderTarget* target)

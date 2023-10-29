@@ -4,7 +4,7 @@ StateManager::StateManager(State* state)
 {
 	
 	this->states.push(state);
-	std::cout << this->states.size() << std::endl;
+
 }
 
 StateManager::~StateManager()
