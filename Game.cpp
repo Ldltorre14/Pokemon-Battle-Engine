@@ -2,7 +2,6 @@
 
 void Game::initWindow()
 {
-	
 
 	try {
 

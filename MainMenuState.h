@@ -6,6 +6,7 @@ class MainMenuState :
     public State
 {
 private:
+    std::map<std::string, sf::Texture*> textures;
     
 
 public:
