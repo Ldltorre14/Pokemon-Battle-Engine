@@ -1,0 +1,23 @@
+{
+    "Spritesheet": {
+        "Player_Walking": {
+            "Path": "Resources/Images/Sprites/NPC/Player/player_walking.png",
+            "Animations": {
+                "Walking_Down": {
+                    "Frames": [[0,0,32,32], [32,0,64,32],[64,0,96,32]]
+                },
+                "Walking_Left": {
+                    "Frames": [[0,32,32,64],[32,32,64,64],[64,32,96,32]]
+                    
+                },
+                "Walking_Up": {
+                    "Frames": [[0,64,32,96],[32,64,64,96],[64,64,96,96]]
+                },
+                "Walking_Right": {
+                    "Frames": [[0,96,32,128],[32,96,64,128],[64,96,96,128]]
+                }
+            }
+        }
+    }
+}
+
