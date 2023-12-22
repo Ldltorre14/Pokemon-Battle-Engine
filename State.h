@@ -13,6 +13,7 @@
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 
+#include "ResourceManager.h"
 
 
 class State
@@ -22,6 +23,7 @@ private:
 
 protected:
 	sf::RenderWindow* window;
+	ResourceManager* resourceManager;
 	bool stateQuitStatus;
 
 	//Cursor/View attributes
@@ -30,11 +32,11 @@ protected:
 	sf::Vector2f mouseViewPos;
 
 public:
-	State(sf::RenderWindow* window);
+	State(sf::RenderWindow* window, ResourceManager* resourceManager);
 	virtual ~State();
 
 	virtual bool getQuit();
-	virtual void updateCursorPos();
+	virtual void updateMousePos();
 
 	virtual void update(const float& dt) = 0;
 

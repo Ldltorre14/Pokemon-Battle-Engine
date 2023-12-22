@@ -8,7 +8,7 @@ private:
 protected:
 
 public:
-    GameState(sf::RenderWindow* window);
+    GameState(sf::RenderWindow* window,ResourceManager* resourceManager);
     ~GameState();
 
     void update(const float& dt);

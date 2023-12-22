@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "StateManager.h"
+#include "ResourceManager.h"
 #include "MainMenuState.h"
 #include "GameState.h"
 
@@ -12,6 +13,7 @@ class Game
 private:
 	sf::RenderWindow* window;
 	StateManager* stateManager;
+	ResourceManager resourceManager;
 
 	std::string title;
 	sf::VideoMode resolution;
@@ -32,6 +34,7 @@ private:
 
 	void initWindow();
 	void initStateManager();
+	
 
 
 public:

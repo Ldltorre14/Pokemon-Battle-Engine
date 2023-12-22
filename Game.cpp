@@ -57,8 +57,10 @@ void Game::initWindow()
 
 void Game::initStateManager()
 {
-	this->stateManager = new StateManager(new MainMenuState(this->window));
+	this->stateManager = new StateManager(new MainMenuState(this->window, &this->resourceManager));
 }
+
+
 
 
 Game::Game()
@@ -66,12 +68,14 @@ Game::Game()
 	this->initWindow();
 	this->initStateManager();
 	
+	
 }
 
 Game::~Game()
 {
 	delete this->window;
 	delete this->stateManager;
+	
 }
 
 void Game::updateDeltaTime()

@@ -7,6 +7,7 @@ class StateManager
 {
 private:
 	std::stack<State*> states;
+	
 
 public:
 	StateManager(State* state);
