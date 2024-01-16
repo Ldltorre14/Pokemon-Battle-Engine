@@ -8,7 +8,7 @@ private:
 protected:
 
 public:
-    GameState(sf::RenderWindow* window,ResourceManager* resourceManager);
+    GameState(sf::RenderWindow* window,ResourceManager* resourceManager, std::map<std::string, int>* supportedKeys);
     ~GameState();
 
     void update(const float& dt);

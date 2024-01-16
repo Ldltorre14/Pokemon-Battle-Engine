@@ -24,6 +24,8 @@ private:
 protected:
 	sf::RenderWindow* window;
 	ResourceManager* resourceManager;
+	std::map<std::string, int>* supportedKeys;
+	std::map<std::string, int> keybinds;
 	bool stateQuitStatus;
 
 	//Cursor/View attributes
@@ -32,7 +34,7 @@ protected:
 	sf::Vector2f mouseViewPos;
 
 public:
-	State(sf::RenderWindow* window, ResourceManager* resourceManager);
+	State(sf::RenderWindow* window, ResourceManager* resourceManager, std::map<std::string, int>* supportedKeys);
 	virtual ~State();
 
 	virtual bool getQuit();

@@ -11,12 +11,13 @@ private:
     sf::RectangleShape background;
 
     void init();
+    void initKeybinds();
     void initBackground();
     void initMousePosText();
     
 
 public:
-    MainMenuState(sf::RenderWindow* window, ResourceManager* resourceManager);
+    MainMenuState(sf::RenderWindow* window, ResourceManager* resourceManager, std::map<std::string, int>* supportedKeys);
     ~MainMenuState();
 
     void renderBackground(sf::RenderTarget* target);

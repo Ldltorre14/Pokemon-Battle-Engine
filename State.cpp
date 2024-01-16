@@ -1,9 +1,10 @@
 #include "State.h"
 
-State::State(sf::RenderWindow* window, ResourceManager* resourceManager)
+State::State(sf::RenderWindow* window, ResourceManager* resourceManager, std::map<std::string, int>* supportedKeys)
 {
 	this->window = window;
 	this->resourceManager = resourceManager;
+	this->supportedKeys = supportedKeys;
 	this->stateQuitStatus = false;
 }
 

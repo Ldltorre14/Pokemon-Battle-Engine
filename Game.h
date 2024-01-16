@@ -14,6 +14,7 @@ private:
 	sf::RenderWindow* window;
 	StateManager* stateManager;
 	ResourceManager resourceManager;
+	std::map<std::string, int> supportedKeys;
 
 	std::string title;
 	sf::VideoMode resolution;
@@ -26,7 +27,6 @@ private:
 
 
 
-
 	sf::Clock clock;
 	float dt;
 	
@@ -34,6 +34,7 @@ private:
 
 	void initWindow();
 	void initStateManager();
+	void initSupportedKeys();
 	
 
 

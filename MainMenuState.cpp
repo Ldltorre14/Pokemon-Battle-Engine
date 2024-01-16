@@ -4,6 +4,34 @@
 void MainMenuState::init() {
 	this->initBackground();
 	this->initMousePosText();
+	this->initKeybinds();
+}
+
+void MainMenuState::initKeybinds()
+{
+	try {
+		std::ifstream file("Config/keybinds/mainmenu_state/mainmenu_keybinds.ini");
+		std::string key;
+		std::string function;
+
+		while (file >> function >> key) {
+			this->keybinds[function] = this->supportedKeys->at(key);
+		}
+	}
+	catch (std::exception& e) {
+		std::cout << "Exception:" << e.what();
+		this->keybinds["MOVE_LEFT"] = this->supportedKeys->at("Left");
+		this->keybinds["MOVE_UP"] = this->supportedKeys->at("Up");
+		this->keybinds["MOVE_RIGHT"] = this->supportedKeys->at("Right");
+		this->keybinds["MOVE_DOWN"] = this->supportedKeys->at("Down");
+		this->keybinds["SELECT_LEFT"] = this->supportedKeys->at("Left");
+		this->keybinds["SELECT_UP"] = this->supportedKeys->at("Up");
+		this->keybinds["SELECT_RIGHT"] = this->supportedKeys->at("Right");
+		this->keybinds["SELECT_Down"] = this->supportedKeys->at("Down");
+		this->keybinds["CLOSE"] = this->supportedKeys->at("Escape");
+		this->keybinds["SELECT"] = this->supportedKeys->at("Enter");
+		this->keybinds["CANCEL"] = this->supportedKeys->at("Backspace");
+	}
 }
 
 void MainMenuState::initBackground()
@@ -35,11 +63,10 @@ void MainMenuState::initMousePosText()
 	this->mousePosText.setString(mousePosTextStream.str());
 }
 
-MainMenuState::MainMenuState(sf::RenderWindow* window, ResourceManager* resourceManager)
-	: State(window,resourceManager)
+MainMenuState::MainMenuState(sf::RenderWindow* window, ResourceManager* resourceManager, std::map<std::string, int>* supportedKeys)
+	: State(window,resourceManager,supportedKeys)
 {
-	this->initBackground();
-	this->initMousePosText();
+	this->init();
 	
 }
 

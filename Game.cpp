@@ -5,7 +5,7 @@ void Game::initWindow()
 
 	try {
 
-		std::ifstream file("Config/window_config.ini");
+		std::ifstream file("Config/window/window_config.ini");
 		
 		if(file.is_open()){
 			std::getline(file, this->title);
@@ -57,7 +57,36 @@ void Game::initWindow()
 
 void Game::initStateManager()
 {
-	this->stateManager = new StateManager(new MainMenuState(this->window, &this->resourceManager));
+	this->stateManager = new StateManager(new MainMenuState(this->window, &this->resourceManager, &this->supportedKeys));
+}
+
+void Game::initSupportedKeys()
+{
+	try {
+		std::ifstream file("Config/keybinds/supported_keys.ini");
+		std::string key;
+		int keyValue;
+
+		while (file >> key >> keyValue) {
+			this->supportedKeys[key] = keyValue;
+		}
+
+	}
+	catch (std::exception& e) {
+		std::cerr << "Error loading the supported_keys.ini file\n";
+		this->supportedKeys["A"] = 0;
+		this->supportedKeys["W"] = 22;
+		this->supportedKeys["D"] = 3;
+		this->supportedKeys["S"] = 18;
+		this->supportedKeys["Left"] = 71;
+		this->supportedKeys["Right"] = 72;
+		this->supportedKeys["Up"] = 73;
+		this->supportedKeys["Down"] = 74;
+		this->supportedKeys["Escape"] = 36;
+		this->supportedKeys["Enter"] = 58;
+		this->supportedKeys["Backspace"] = 59;
+	}
+	
 }
 
 
@@ -66,8 +95,8 @@ void Game::initStateManager()
 Game::Game()
 {
 	this->initWindow();
+	this->initSupportedKeys();
 	this->initStateManager();
-	
 	
 }
 
