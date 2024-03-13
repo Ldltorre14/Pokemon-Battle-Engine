@@ -57,7 +57,7 @@ void Game::initWindow()
 
 void Game::initStateManager()
 {
-	this->stateManager = new StateManager(new MainMenuState(this->window, &this->resourceManager, &this->supportedKeys));
+	this->stateManager = new StateManager(new MainMenuState(this->window, &this->resourceManager, this->stateManager, &this->supportedKeys));
 }
 
 void Game::initSupportedKeys()

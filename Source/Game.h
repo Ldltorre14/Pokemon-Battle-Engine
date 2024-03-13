@@ -1,10 +1,10 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "StateManager.h"
-#include "ResourceManager.h"
-#include "MainMenuState.h"
-#include "GameState.h"
+#include "Managers/StateManager.h"
+#include "Managers/ResourceManager.h"
+#include "States/MainMenuState.h"
+#include "States/GameState.h"
 
 //main class for handling the game/application
 

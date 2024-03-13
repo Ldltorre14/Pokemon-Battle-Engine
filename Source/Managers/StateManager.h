@@ -1,7 +1,11 @@
 #ifndef STATEMANAGER_H
 #define STATEMANAGER_H
 
-#include "State.h"
+#include <stack>
+
+//Declaration in advance of State for avoiding circular include errors when including StateManager at State
+class State;
+
 
 class StateManager
 {

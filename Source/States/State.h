@@ -13,7 +13,8 @@
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 
-#include "ResourceManager.h"
+#include "../Managers/ResourceManager.h"
+#include "../Managers/StateManager.h"
 
 
 class State
@@ -24,6 +25,7 @@ private:
 protected:
 	sf::RenderWindow* window;
 	ResourceManager* resourceManager;
+	StateManager* stateManager;
 	std::map<std::string, int>* supportedKeys;
 	std::map<std::string, int> keybinds;
 	bool stateQuitStatus;
@@ -34,11 +36,13 @@ protected:
 	sf::Vector2f mouseViewPos;
 
 public:
-	State(sf::RenderWindow* window, ResourceManager* resourceManager, std::map<std::string, int>* supportedKeys);
+	State(sf::RenderWindow* window, ResourceManager* resourceManager, StateManager* stateManager, std::map<std::string, int>* supportedKeys);
 	virtual ~State();
 
+	virtual void checkForQuit() = 0;
 	virtual bool getQuit();
 	virtual void updateMousePos();
+	virtual void updateKeyInput() = 0;
 
 	virtual void update(const float& dt) = 0;
 

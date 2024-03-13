@@ -51,6 +51,7 @@ void MainMenuState::initBackground()
 
 }
 
+
 void MainMenuState::initMousePosText()
 {
 	
@@ -63,15 +64,21 @@ void MainMenuState::initMousePosText()
 	this->mousePosText.setString(mousePosTextStream.str());
 }
 
-MainMenuState::MainMenuState(sf::RenderWindow* window, ResourceManager* resourceManager, std::map<std::string, int>* supportedKeys)
-	: State(window,resourceManager,supportedKeys)
+MainMenuState::MainMenuState(sf::RenderWindow* window, ResourceManager* resourceManager, StateManager* stateManager, std::map<std::string, int>* supportedKeys)
+	: State(window,resourceManager,stateManager,supportedKeys)
 {
 	this->init();
-	
 }
 
 MainMenuState::~MainMenuState()
 {
+}
+
+void MainMenuState::checkForQuit()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE")))) {
+		this->stateQuitStatus = true;
+	}
 }
 
 void MainMenuState::renderBackground(sf::RenderTarget* target)
@@ -89,10 +96,27 @@ void MainMenuState::renderMousePosText(sf::RenderTarget* target)
 	
 }
 
+void MainMenuState::updateKeyInput() {
+
+}
+
+void MainMenuState::updateButtonInput(){
+
+}
+
+void MainMenuState::updateInput()
+{
+	this->checkForQuit();
+	this->updateKeyInput();
+	this->updateButtonInput();
+}
+
+
+
 void MainMenuState::update(const float& dt)
 {
-	//std::cout << "Hello from main menu" << std::endl;
 	this->updateMousePos();
+	this->updateInput();
 }
 
 void MainMenuState::render(sf::RenderTarget* target)
