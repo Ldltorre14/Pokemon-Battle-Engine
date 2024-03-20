@@ -16,26 +16,47 @@ namespace UI{
 		HOVER_BTN = 1,
 		ACTIVE_BTN = 2
 	};
+	enum class textAlignment : int {
+		TOP_LEFT = 0,
+		TOP_CENTER = 1,
+		TOP_RIGHT = 2,
+		LEFT = 3,
+		CENTER = 4,
+		RIGHT = 5,
+		BOTTOM_LEFT = 6,
+		BOTTOM_CENTER = 7,
+		BOTTOM_RIGHT = 8
+	};
+
 	class Button
 	{
 	private:
+		
+	protected:
 		buttonState state;
+		sf::Shape* baseShape;
 
-		sf::Text text;
-		sf::Font* font;
-		unsigned fontSize;
-
-		sf::Texture* btnTexture;
-		sf::Color* txtColor;
 
 	public:
-		Button(const sf::Text& text, sf::Font* font, unsigned fontSize,
-			sf::Texture* btnTexture = nullptr, sf::Color* txtColor = nullptr);
+		Button(const buttonState& state, sf::Shape* shape);
 		virtual ~Button();
+		bool isOnButton(const sf::Event& event);
+		bool isOnButton(const sf::Vector2f& cursor);
 
-		virtual void setState(buttonState btn_state);
-		virtual void update() = 0;
-		virtual void render(sf::RenderTarget* target = nullptr) = 0;
+		virtual void setState(const buttonState& btn_state);
+		virtual void setButtonSize(const sf::Vector2f& buttonSize) {};
+		virtual void setButtonPosition(const sf::Vector2f& buttonPos) {};
+		virtual void setText(const std::string& stringText) {};
+		virtual void setText(const sf::Text& text) {};
+		virtual void setTextPosition(const sf::Vector2f& pos) {};
+		virtual void setBackgroundColor(const sf::Color& color) {};
+
+		virtual buttonState getState();
+		virtual void updateState(const sf::Vector2f& cursor);
+		virtual void handleState(const sf::Event& event);
+		virtual void update(const sf::Vector2f& cursor, const sf::Event& event);
+		virtual void render(sf::RenderTarget* target = nullptr);
+
 	};
 };
 

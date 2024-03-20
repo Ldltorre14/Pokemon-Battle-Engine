@@ -7,6 +7,12 @@ void MainMenuState::init() {
 	this->initKeybinds();
 }
 
+
+void MainMenuState::initButton()
+{
+	
+}
+
 void MainMenuState::initKeybinds()
 {
 	try {
@@ -65,8 +71,11 @@ void MainMenuState::initMousePosText()
 }
 
 MainMenuState::MainMenuState(sf::RenderWindow* window, ResourceManager* resourceManager, StateManager* stateManager, std::map<std::string, int>* supportedKeys)
-	: State(window,resourceManager,stateManager,supportedKeys)
+	: State(window, resourceManager, stateManager, supportedKeys)
 {
+	this->button = new UI::RectButton(UI::buttonState::IDLE_BTN,sf::Vector2f(100,100),"TEST",
+										this->resourceManager->getFont("Gen1_2"), 18, sf::Vector2f(100, 100),
+										sf::Color::Green);
 	this->init();
 }
 
@@ -102,6 +111,7 @@ void MainMenuState::updateKeyInput() {
 
 void MainMenuState::updateButtonInput(){
 
+	
 }
 
 void MainMenuState::updateInput()
@@ -124,9 +134,17 @@ void MainMenuState::render(sf::RenderTarget* target)
 	if (!target)
 		target = this->window;
 
+	// Render target check
+	if (!target) {
+		std::cerr << "Invalid render target!" << std::endl;
+		return;
+	}
 
-
-	
 	this->renderBackground(target);
+
+	// Render mouse position text
 	this->renderMousePosText(target);
+
+	this->button->render(target);
+
 }
