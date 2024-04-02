@@ -34,13 +34,14 @@ namespace UI{
 		
 	protected:
 		buttonState state;
+		textAlignment alignment;
 		sf::Shape* baseShape;
+		sf::Text text;
 
 
 	public:
-		Button(const buttonState& state, sf::Shape* shape);
+		Button(const buttonState& state, const UI::textAlignment& alignment, sf::Shape* shape);
 		virtual ~Button();
-		bool isOnButton(const sf::Event& event);
 		bool isOnButton(const sf::Vector2f& cursor);
 
 		virtual void setState(const buttonState& btn_state);
@@ -49,12 +50,15 @@ namespace UI{
 		virtual void setText(const std::string& stringText) {};
 		virtual void setText(const sf::Text& text) {};
 		virtual void setTextPosition(const sf::Vector2f& pos) {};
+		virtual void setTextAlignment(const UI::textAlignment& alignment) {};
 		virtual void setBackgroundColor(const sf::Color& color) {};
 
 		virtual buttonState getState();
+		virtual void handleTextAlignment() {};
 		virtual void updateState(const sf::Vector2f& cursor);
-		virtual void handleState(const sf::Event& event);
-		virtual void update(const sf::Vector2f& cursor, const sf::Event& event);
+		virtual void handleState();
+		virtual void update(const sf::Vector2f& cursor);
+		virtual void renderText(sf::RenderTarget* target = nullptr) {};
 		virtual void render(sf::RenderTarget* target = nullptr);
 
 	};

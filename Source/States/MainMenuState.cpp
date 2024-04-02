@@ -8,10 +8,6 @@ void MainMenuState::init() {
 }
 
 
-void MainMenuState::initButton()
-{
-	
-}
 
 void MainMenuState::initKeybinds()
 {
@@ -70,13 +66,12 @@ void MainMenuState::initMousePosText()
 	this->mousePosText.setString(mousePosTextStream.str());
 }
 
-MainMenuState::MainMenuState(sf::RenderWindow* window, ResourceManager* resourceManager, StateManager* stateManager, std::map<std::string, int>* supportedKeys)
-	: State(window, resourceManager, stateManager, supportedKeys)
+MainMenuState::MainMenuState(sf::RenderWindow* window, ResourceManager* resourceManager, StateManager* stateManager, UIManager* uiManager, std::map<std::string, int>* supportedKeys)
+	: State(window, resourceManager, stateManager, uiManager, supportedKeys)
 {
-	this->button = new UI::RectButton(UI::buttonState::IDLE_BTN,sf::Vector2f(100,100),"TEST",
-										this->resourceManager->getFont("Gen1_2"), 18, sf::Vector2f(100, 100),
-										sf::Color::Green);
 	this->init();
+	if (this->uiManager == nullptr)
+		std::cout << "ERROR INITIALIZING UIMANAGER";
 }
 
 MainMenuState::~MainMenuState()
@@ -88,6 +83,7 @@ void MainMenuState::checkForQuit()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE")))) {
 		this->stateQuitStatus = true;
 	}
+	
 }
 
 void MainMenuState::renderBackground(sf::RenderTarget* target)
@@ -111,7 +107,7 @@ void MainMenuState::updateKeyInput() {
 
 void MainMenuState::updateButtonInput(){
 
-	
+	this->uiManager->update(this->mouseViewPos);
 }
 
 void MainMenuState::updateInput()
@@ -140,11 +136,10 @@ void MainMenuState::render(sf::RenderTarget* target)
 		return;
 	}
 
+	// Render background if needed
 	this->renderBackground(target);
-
+	this->uiManager->render(target);
 	// Render mouse position text
 	this->renderMousePosText(target);
-
-	this->button->render(target);
 
 }

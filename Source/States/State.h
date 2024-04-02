@@ -15,6 +15,7 @@
 
 #include "../Managers/ResourceManager.h"
 #include "../Managers/StateManager.h"
+#include "../Managers/UIManager.h"
 
 
 class State
@@ -26,6 +27,7 @@ protected:
 	sf::RenderWindow* window;
 	ResourceManager* resourceManager;
 	StateManager* stateManager;
+	UIManager* uiManager;
 	std::map<std::string, int>* supportedKeys;
 	std::map<std::string, int> keybinds;
 	bool stateQuitStatus;
@@ -36,7 +38,7 @@ protected:
 	sf::Vector2f mouseViewPos;
 
 public:
-	State(sf::RenderWindow* window, ResourceManager* resourceManager, StateManager* stateManager, std::map<std::string, int>* supportedKeys);
+	State(sf::RenderWindow* window, ResourceManager* resourceManager, StateManager* stateManager, UIManager* uiManager, std::map<std::string, int>* supportedKeys);
 	virtual ~State();
 
 	virtual void checkForQuit() = 0;

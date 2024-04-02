@@ -13,7 +13,6 @@ private:
     sf::Text mousePosText;
     sf::Texture* bgTexture;
     sf::RectangleShape background;
-    UI::Button* button;
 
     void init();
     void initKeybinds();
@@ -22,10 +21,10 @@ private:
     
 
 public:
-    MainMenuState(sf::RenderWindow* window, ResourceManager* resourceManager, StateManager* stateManager, std::map<std::string, int>* supportedKeys);
+    MainMenuState(sf::RenderWindow* window, ResourceManager* resourceManager, StateManager* stateManager, UIManager* uiManager, std::map<std::string, int>* supportedKeys);
     ~MainMenuState();
 
-    void initButton();
+    
     void checkForQuit();
     void renderBackground(sf::RenderTarget* target);
     void renderMousePosText(sf::RenderTarget* target);

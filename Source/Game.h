@@ -3,6 +3,7 @@
 
 #include "Managers/StateManager.h"
 #include "Managers/ResourceManager.h"
+#include "Managers/UIManager.h"
 #include "States/MainMenuState.h"
 #include "States/GameState.h"
 
@@ -14,6 +15,8 @@ private:
 	sf::RenderWindow* window;
 	StateManager* stateManager;
 	ResourceManager resourceManager;
+	UIManager uiManager;
+
 	std::map<std::string, int> supportedKeys;
 
 	std::string title;
