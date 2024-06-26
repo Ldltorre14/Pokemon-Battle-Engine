@@ -1,4 +1,4 @@
-#include "GameState.h"
+#include "gamestate.h"
 
 GameState::GameState(sf::RenderWindow* window, ResourceManager* resourceManager, StateManager* stateManager, UIManager* uiManager, std::map<std::string, int>* supportedKeys)
 	:State(window, resourceManager, stateManager, uiManager, supportedKeys)
@@ -19,5 +19,15 @@ void GameState::render(sf::RenderTarget* target)
 	if (!target)
 		target = this->window;
 
+	this->scene.render(target);
 	
+}
+
+void GameState::checkForQuit()
+{
+	
+}
+
+void GameState::updateKeyInput()
+{
 }

@@ -168,31 +168,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\UI Components\CircleButton.cpp" />
-    <ClCompile Include="Source\UI Components\ConvexButton.cpp" />
-    <ClCompile Include="Source\UI Components\RectButton.cpp" />
-    <ClCompile Include="Source\Game.cpp" />
+    <ClCompile Include="Source\Game Components\tilemap.cpp" />
+    <ClCompile Include="Source\Levels\level.cpp" />
+    <ClCompile Include="Source\Scenes\scene.cpp" />
+    <ClCompile Include="Source\UI Components\circlebutton.cpp" />
+    <ClCompile Include="Source\UI Components\convexbutton.cpp" />
+    <ClCompile Include="Source\UI Components\rectbutton.cpp" />
+    <ClCompile Include="Source\game.cpp" />
     <ClCompile Include="Source\main.cpp" />
-    <ClCompile Include="Source\Managers\ResourceManager.cpp" />
-    <ClCompile Include="Source\Managers\StateManager.cpp" />
-    <ClCompile Include="Source\Managers\UIManager.cpp" />
-    <ClCompile Include="Source\States\GameState.cpp" />
-    <ClCompile Include="Source\States\MainMenuState.cpp" />
-    <ClCompile Include="Source\States\State.cpp" />
-    <ClCompile Include="Source\UI Components\Button.cpp" />
+    <ClCompile Include="Source\Managers\resourcemanager.cpp" />
+    <ClCompile Include="Source\Managers\statemanager.cpp" />
+    <ClCompile Include="Source\Managers\uimanager.cpp" />
+    <ClCompile Include="Source\States\gamestate.cpp" />
+    <ClCompile Include="Source\States\mainmenustate.cpp" />
+    <ClCompile Include="Source\States\state.cpp" />
+    <ClCompile Include="Source\UI Components\button.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\UI Components\CircleButton.h" />
-    <ClInclude Include="Source\UI Components\ConvexButton.h" />
-    <ClInclude Include="Source\UI Components\RectButton.h" />
-    <ClInclude Include="Source\Game.h" />
-    <ClInclude Include="Source\Managers\ResourceManager.h" />
-    <ClInclude Include="Source\Managers\StateManager.h" />
-    <ClInclude Include="Source\Managers\UIManager.h" />
-    <ClInclude Include="Source\States\GameState.h" />
-    <ClInclude Include="Source\States\MainMenuState.h" />
-    <ClInclude Include="Source\States\State.h" />
-    <ClInclude Include="Source\UI Components\Button.h" />
+    <ClInclude Include="Source\Game Components\tilemap.h" />
+    <ClInclude Include="Source\Levels\level.h" />
+    <ClInclude Include="Source\Scenes\scene.h" />
+    <ClInclude Include="Source\Types\tiles.h" />
+    <ClInclude Include="Source\Types\types.h" />
+    <ClInclude Include="Source\Types\ui_types.h" />
+    <ClInclude Include="Source\UI Components\circlebutton.h" />
+    <ClInclude Include="Source\UI Components\convexbutton.h" />
+    <ClInclude Include="Source\UI Components\rectbutton.h" />
+    <ClInclude Include="Source\game.h" />
+    <ClInclude Include="Source\Managers\resourcemanager.h" />
+    <ClInclude Include="Source\Managers\statemanager.h" />
+    <ClInclude Include="Source\Managers\uimanager.h" />
+    <ClInclude Include="Source\States\gamestate.h" />
+    <ClInclude Include="Source\States\mainmenustate.h" />
+    <ClInclude Include="Source\States\state.h" />
+    <ClInclude Include="Source\UI Components\button.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

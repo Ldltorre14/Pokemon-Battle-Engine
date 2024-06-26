@@ -2,8 +2,8 @@
 #define UIMANAGER_H
 
 #include <map>
-#include "../UI Components/RectButton.h"
-#include "../Managers/ResourceManager.h"
+#include "../UI Components/rectbutton.h"
+#include "../Managers/resourcemanager.h"
 
 class UIManager
 {

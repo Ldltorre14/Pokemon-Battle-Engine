@@ -1,4 +1,4 @@
-#include "ResourceManager.h"
+#include "resourcemanager.h"
 
 void ResourceManager::setFont(std::string fontKey, std::string fontName)
 {

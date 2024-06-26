@@ -1,4 +1,4 @@
-#include "MainMenuState.h"
+#include "mainmenustate.h"
 
 
 void MainMenuState::init() {
@@ -83,7 +83,44 @@ void MainMenuState::checkForQuit()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE")))) {
 		this->stateQuitStatus = true;
 	}
+	else if (this->uiManager->getButton("MAINMENU", "EXIT_BUTTON")->getState() == UI::buttonState::ACTIVE_BTN) {
+		this->stateQuitStatus = true;
+	}
 	
+}
+
+void MainMenuState::checkForStart() {
+	if (this == nullptr) {
+		std::cerr << "Error: 'this' is nullptr\n";
+		return;
+	}
+
+	if (this->stateManager == nullptr) {
+		std::cerr << "Error: stateManager is nullptr\n";
+		return;
+	}
+
+
+	if (this->uiManager == nullptr) {
+		std::cerr << "Error: uiManager is nullptr\n";
+		return;
+	}
+
+	auto startButton = this->uiManager->getButton("MAINMENU", "START_BUTTON");
+	if (startButton == nullptr) {
+		std::cerr << "Error: startButton is nullptr\n";
+		return;
+	}
+
+	if (startButton->getState() == UI::buttonState::ACTIVE_BTN) {
+		if (this->stateManager == nullptr) {
+			std::cerr << "Error: stateManager is nullptr when pushing new GameState\n";
+			return;
+		}
+		this->stateManager->pushState(new GameState(this->window, this->resourceManager, this->stateManager,
+			this->uiManager, this->supportedKeys));
+		std::cout << "GAME STATE PUSHED\n";
+	}
 }
 
 void MainMenuState::renderBackground(sf::RenderTarget* target)
@@ -112,6 +149,7 @@ void MainMenuState::updateButtonInput(){
 
 void MainMenuState::updateInput()
 {
+	this->checkForStart();
 	this->checkForQuit();
 	this->updateKeyInput();
 	this->updateButtonInput();

@@ -1,12 +1,12 @@
-#include "StateManager.h"
-#include "../States/State.h"
+#include "statemanager.h"
+#include "../States/state.h"
 
 
 
 StateManager::StateManager(State* state)
 {
-	
-	this->states.push(state);
+	if (state != nullptr)
+		this->states.push(state);
 
 }
 
@@ -24,6 +24,11 @@ bool StateManager::noTasks()
 }
 
 
+
+void StateManager::pushState(State* state)
+{
+	this->states.push(state);
+}
 
 void StateManager::deleteState()
 {

@@ -1,4 +1,4 @@
-#include "State.h"
+#include "state.h"
 
 State::State(sf::RenderWindow* window, ResourceManager* resourceManager, StateManager* stateManager, UIManager* uiManager, std::map<std::string, int>* supportedKeys)
 {

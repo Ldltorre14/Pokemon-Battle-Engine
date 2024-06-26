@@ -21,75 +21,102 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Game.cpp">
+    <ClCompile Include="Source\game.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="Source\main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Source\UI Components\Button.cpp">
+    <ClCompile Include="Source\UI Components\button.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Source\States\GameState.cpp">
+    <ClCompile Include="Source\States\gamestate.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Source\States\MainMenuState.cpp">
+    <ClCompile Include="Source\States\mainmenustate.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Source\States\State.cpp">
+    <ClCompile Include="Source\States\state.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Managers\ResourceManager.cpp">
+    <ClCompile Include="Source\Managers\resourcemanager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Managers\StateManager.cpp">
+    <ClCompile Include="Source\Managers\statemanager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Managers\UIManager.cpp">
+    <ClCompile Include="Source\Managers\uimanager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Source\UI Components\RectButton.cpp">
+    <ClCompile Include="Source\UI Components\rectbutton.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Source\UI Components\CircleButton.cpp">
+    <ClCompile Include="Source\UI Components\circlebutton.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Source\UI Components\ConvexButton.cpp">
+    <ClCompile Include="Source\UI Components\convexbutton.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scenes\scene.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Levels\level.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game Components\tilemap.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Game.h">
+    <ClInclude Include="Source\game.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Source\UI Components\Button.h">
+    <ClInclude Include="Source\UI Components\button.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Source\States\GameState.h">
+    <ClInclude Include="Source\States\gamestate.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Source\States\MainMenuState.h">
+    <ClInclude Include="Source\States\mainmenustate.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Source\States\State.h">
+    <ClInclude Include="Source\States\state.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Managers\ResourceManager.h">
+    <ClInclude Include="Source\Managers\resourcemanager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Managers\StateManager.h">
+    <ClInclude Include="Source\Managers\statemanager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Managers\UIManager.h">
+    <ClInclude Include="Source\Managers\uimanager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Source\UI Components\RectButton.h">
+    <ClInclude Include="Source\UI Components\rectbutton.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Source\UI Components\CircleButton.h">
+    <ClInclude Include="Source\UI Components\circlebutton.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Source\UI Components\ConvexButton.h">
+    <ClInclude Include="Source\UI Components\convexbutton.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scenes\scene.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Levels\level.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game Components\tilemap.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Types\types.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Types\tiles.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Types\ui_types.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

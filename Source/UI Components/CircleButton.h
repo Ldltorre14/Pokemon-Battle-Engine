@@ -1,7 +1,7 @@
 #ifndef CIRCLEBUTTON_H
 #define CIRCLEBUTTON_H
 
-#include "Button.h"
+#include "button.h"
 
 namespace UI {
 	class CircleButton : public Button {

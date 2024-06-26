@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "game.h"
 
 void Game::initWindow()
 {
@@ -57,7 +57,9 @@ void Game::initWindow()
 
 void Game::initStateManager()
 {
-	this->stateManager = new StateManager(new MainMenuState(this->window, &this->resourceManager, this->stateManager, &this->uiManager, &this->supportedKeys));
+	this->stateManager = new StateManager();
+	this->stateManager->pushState(new MainMenuState(this->window, &this->resourceManager, &*this->stateManager,
+		&this->uiManager, &this->supportedKeys));
 }
 
 

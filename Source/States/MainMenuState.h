@@ -1,8 +1,9 @@
 #ifndef MAINMENUSTATE_H
 #define MAINMENUSTATE_H
 
-#include "State.h"
-#include "../UI Components/RectButton.h"
+#include "state.h"
+#include "gamestate.h"
+#include "../UI Components/rectbutton.h"
 
 
 
@@ -26,6 +27,7 @@ public:
 
     
     void checkForQuit();
+    void checkForStart();
     void renderBackground(sf::RenderTarget* target);
     void renderMousePosText(sf::RenderTarget* target);
     void updateKeyInput();

@@ -1,10 +1,12 @@
 #pragma once
-#include "State.h"
+#include "state.h"
+#include "../Scenes/scene.h"
 
 class GameState :
     public State
 {
 private:
+    Scene scene;
 
 protected:
 
@@ -15,6 +17,7 @@ public:
     void update(const float& dt);
     void render(sf::RenderTarget* target = NULL);
 
-
+    void checkForQuit();
+    void updateKeyInput();
 };
 
