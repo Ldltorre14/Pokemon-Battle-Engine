@@ -119,7 +119,8 @@ void TileMap::render(sf::RenderTarget* target) {
 				target->draw(*tile);
 			}
 		}
-	}
+	} 
 }
 
+void test();
 
