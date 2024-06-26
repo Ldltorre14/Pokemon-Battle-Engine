@@ -122,4 +122,5 @@ void TileMap::render(sf::RenderTarget* target) {
 	} 
 }
 
+void test();
 
