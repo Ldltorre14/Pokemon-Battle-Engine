@@ -1,7 +1,7 @@
 #ifndef CONVEXBUTTON_H
 #define CONVEXBUTTON_H
 
-#include "button.h"
+#include "Button.h"
 
 namespace UI {
 	class ConvexButton : Button {

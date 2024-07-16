@@ -1,7 +1,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include "../UI Components/rectbutton.h"
+#include "../UI Components/RectButton.h"
 
 class Scene {
 private:

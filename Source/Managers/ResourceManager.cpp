@@ -1,4 +1,4 @@
-#include "resourcemanager.h"
+#include "ResourceManager.h"
 
 void ResourceManager::setFont(std::string fontKey, std::string fontName)
 {
@@ -50,6 +50,7 @@ void ResourceManager::setTexture(std::string categoryKey, std::string textureKey
 void ResourceManager::initTextures()
 {
     this->setTexture("Background", "Title", "Resources/Images/Backgrounds/Title/background.png");
+    
     std::cout << "TEXTURES INITIALIZED IN RESOURCEMANAGER\n";
 }
 

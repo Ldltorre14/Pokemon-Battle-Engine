@@ -1,9 +1,9 @@
 #ifndef TILES_H
 #define TILES_H
 
-namespace TileStates {
+namespace tl {
 
-    enum Terrain : int {
+    enum class Terrain : int {
         /*
         TERRAIN / ROADS FOR ROUTES, TOWNS AND CITIES
         SPRITESHEET MATRIX 3X3
@@ -24,7 +24,7 @@ namespace TileStates {
         BOTTOMRIGHT = 9
     };
 
-    enum TerrainExt : int {
+    enum class TerrainExt : int {
         /*
         TERRAIN EXTENDED/ ROADS FOR ROUTES, TOWNS AND CITIES
         SPRITESHEET MATRIX 3X4

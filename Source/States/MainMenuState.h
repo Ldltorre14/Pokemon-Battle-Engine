@@ -1,9 +1,9 @@
 #ifndef MAINMENUSTATE_H
 #define MAINMENUSTATE_H
 
-#include "state.h"
-#include "gamestate.h"
-#include "../UI Components/rectbutton.h"
+#include "State.h"
+#include "GameState.h"
+#include "../UI Components/RectButton.h"
 
 
 

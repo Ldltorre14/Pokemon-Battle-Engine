@@ -1,7 +1,7 @@
 #ifndef RECTBUTTON_H
 #define RECTBUTTON_H
 
-#include "button.h"
+#include "Button.h"
 
 namespace UI {
     class RectButton : public Button {

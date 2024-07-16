@@ -1,4 +1,4 @@
-#include "uimanager.h"
+#include "UIManager.h"
 
 void UIManager::initButtons()
 {

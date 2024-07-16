@@ -1,4 +1,4 @@
-#include "rectbutton.h"
+#include "RectButton.h"
 
 using namespace UI;
 

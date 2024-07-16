@@ -21,7 +21,7 @@ public:
 	~TileMap();
 
 	void setMapId(std::string mapId);
-	void setMapState(TileMapState& mapState);
+	void setMapState(TileMapState mapState);
 	void setTileSize(int tileSize);
 	void setLogicGrid(std::vector<std::vector<int>> logicGrid);
 	void setTileGrid(std::vector<std::vector<sf::Sprite*>> tileGrid);
@@ -32,7 +32,13 @@ public:
 	const std::vector<std::vector<int>>& getLogicGrid();
 	const std::vector<std::vector<sf::Sprite*>>& getTileGrid();
 
+	
 	bool isActive();
+	bool isLoaded();
+	bool isRendered();
+	bool isLogicGridEmpty();
+	bool isTileGridEmpty();
+
 	void load();
 	void unload();
 	void render(sf::RenderTarget* target);

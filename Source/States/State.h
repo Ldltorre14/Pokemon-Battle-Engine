@@ -13,9 +13,9 @@
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 
-#include "../Managers/resourcemanager.h"
-#include "../Managers/statemanager.h"
-#include "../Managers/uimanager.h"
+#include "../Managers/ResourceManager.h"
+#include "../Managers/StateManager.h"
+#include "../Managers/UIManager.h"
 
 
 class State

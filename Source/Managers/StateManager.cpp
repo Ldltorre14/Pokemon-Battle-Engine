@@ -1,5 +1,5 @@
-#include "statemanager.h"
-#include "../States/state.h"
+#include "StateManager.h"
+#include "../States/State.h"
 
 
 
@@ -21,6 +21,7 @@ bool StateManager::noTasks()
 {
 	if (this->states.empty())
 		return true;
+	return false;
 }
 
 

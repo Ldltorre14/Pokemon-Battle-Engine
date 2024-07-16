@@ -1,8 +1,11 @@
-#include "gamestate.h"
+#include "GameState.h"
 
-GameState::GameState(sf::RenderWindow* window, ResourceManager* resourceManager, StateManager* stateManager, UIManager* uiManager, std::map<std::string, int>* supportedKeys)
+GameState::GameState(sf::RenderWindow* window, 
+	ResourceManager* resourceManager, StateManager* stateManager, UIManager* uiManager,
+	std::map<std::string, int>* supportedKeys)
 	:State(window, resourceManager, stateManager, uiManager, supportedKeys)
 {
+	
 }
 
 GameState::~GameState()

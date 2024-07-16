@@ -1,17 +1,21 @@
 #pragma once
-#include "state.h"
-#include "../Scenes/scene.h"
+#include "State.h"
+#include "../Scenes/Scene.h"
+#include "../Game Objects/TileMap.h"
+#include "../Levels/pallet_town_data.h"
+#include "../Entities/Entity.h"
 
 class GameState :
     public State
 {
 private:
     Scene scene;
-
+    
 protected:
 
 public:
-    GameState(sf::RenderWindow* window, ResourceManager* resourceManager, StateManager* stateManager, UIManager* uiManager, std::map<std::string, int>* supportedKeys);
+    GameState(sf::RenderWindow* window, ResourceManager* resourceManager, 
+        StateManager* stateManager, UIManager* uiManager, std::map<std::string, int>* supportedKeys);
     ~GameState();
 
     void update(const float& dt);
