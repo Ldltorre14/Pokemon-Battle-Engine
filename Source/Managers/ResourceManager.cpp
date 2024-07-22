@@ -1,5 +1,82 @@
 #include "ResourceManager.h"
 
+
+//  <<<<<<  CONSTRUCTOR / DESTRUCTOR  >>>>>>
+
+ResourceManager::ResourceManager()
+{
+    this->initTextures();
+    this->initFonts();
+}
+
+ResourceManager::~ResourceManager()
+{
+    // Deallocate memory for textures
+    for (auto& category : this->textures) {
+        for (auto& texturePair : category.second) {
+            delete texturePair.second;
+        }
+    }
+
+    // Deallocate memory for fonts
+    for (auto& fontPair : this->fonts) {
+        delete fontPair.second;
+    }
+
+    std::cout << "ResourceManager destructor called." << std::endl;
+}
+
+
+//  <<<<<<  PRIVATE INITIALIZERS  >>>>>>
+
+void ResourceManager::initTextures()
+{
+    this->setTexture("Background", "Title", "Resources/Images/Backgrounds/Title/background.png");
+
+    this->initTileSets();
+
+    std::cout << "TEXTURES INITIALIZED IN RESOURCEMANAGER\n";
+}
+
+void ResourceManager::initTileSets()
+{
+    // Terrain sprites
+    this->setTexture("Tileset", "Terrains", "Resources/Images/Tilesets/Terrains/outdoors.png");
+}
+
+void ResourceManager::initEntitiesSpritesheets()
+{
+    this->setTexture("Sprites", "Player_Walking", "Resources/Images/Sprites/Entities/player_walking.png");
+    this->setTexture("Sprites", "Player_Running", "Resources/Images/Sprites/Entities/player_running.png");
+    this->setTexture("Sprites", "Player_Bicycle_Stand", "Resources/Images/Sprites/Entities/player_bicycle_stand.png");
+    this->setTexture("Sprites", "Player_Bicycle_Moving", "Resources/Images/Sprites/Entities/player_bicycle_moving.png");
+}
+
+
+void ResourceManager::initHUDTextures()
+{
+    this->setTexture("HUD", "General_Buttons", "Resources/Images/HUD/Buttons/general_buttons.png");
+    this->setTexture("HUD", "Pokeball_Icon", "Resources/Images/HUD/Buttons/pokeball_icon.png");
+    this->setTexture("HUD", "Settings_Icon", "Resources/Images/HUD/Buttons/settings_icon.png");
+    this->setTexture("HUD", "Save_Icon", "Resources/Images/HUD/Buttons/save_icon.png");
+    this->setTexture("HUD", "General_Buttons", "Resources/Images/HUD/Buttons/general_buttons.png");
+    
+}
+
+void ResourceManager::initFonts()
+{
+    this->setFont("Gen1_2", "Resources/Fonts/1-2_Gen_Font.ttf");
+    this->setFont("Gen3", "Resources/Fonts/3_Gen_Font.ttf");
+    this->setFont("Gen4", "Resources/Fonts/4_Gen_Font.ttf");
+    this->setFont("Gen5", "Resources/Fonts/5_Gen_Font.ttf");
+    this->setFont("Gen6", "Resources/Fonts/6_Gen_Font.ttf");
+    std::cout << "FONTS INITIALIZED IN RESOURCEMANAGER\n";
+    this->getSize();
+}
+
+
+//  <<<<<<  SETTERS  >>>>>> 
+
 void ResourceManager::setFont(std::string fontKey, std::string fontName)
 {
 
@@ -47,46 +124,8 @@ void ResourceManager::setTexture(std::string categoryKey, std::string textureKey
 }
 
 
-void ResourceManager::initTextures()
-{
-    this->setTexture("Background", "Title", "Resources/Images/Backgrounds/Title/background.png");
-    
-    std::cout << "TEXTURES INITIALIZED IN RESOURCEMANAGER\n";
-}
 
-void ResourceManager::initFonts()
-{
-    this->setFont("Gen1_2", "Resources/Fonts/1-2_Gen_Font.ttf");
-    this->setFont("Gen3", "Resources/Fonts/3_Gen_Font.ttf");
-    this->setFont("Gen4", "Resources/Fonts/4_Gen_Font.ttf");
-    this->setFont("Gen5", "Resources/Fonts/5_Gen_Font.ttf");
-    this->setFont("Gen6", "Resources/Fonts/6_Gen_Font.ttf");
-    std::cout << "FONTS INITIALIZED IN RESOURCEMANAGER\n";
-    this->getSize();
-}
-
-ResourceManager::ResourceManager()
-{
-    this->initTextures();
-    this->initFonts();
-}
-
-ResourceManager::~ResourceManager()
-{
-    // Deallocate memory for textures
-    for (auto& category : this->textures) {
-        for (auto& texturePair : category.second) {
-            delete texturePair.second;
-        }
-    }
-
-    // Deallocate memory for fonts
-    for (auto& fontPair : this->fonts) {
-        delete fontPair.second;
-    }
-
-    std::cout << "ResourceManager destructor called." << std::endl;
-}
+//  <<<<<<  GETTERS  >>>>>>
 
 sf::Texture* ResourceManager::getTexture(const std::string& categoryKey, const std::string& textureKey)
 {

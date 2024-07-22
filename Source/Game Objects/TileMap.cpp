@@ -1,13 +1,40 @@
 #include "TileMap.h"
 
+//DEFAULT CONSTRUCTOR
+TileMap::TileMap()
+{
+	this->mapId = "empty Id";
+	this->mapState = TileMapState::READY;
+	this->logicGrid = { 
+		{enumToInt(tl::Terrain::TOPLEFTCORNER), enumToInt(tl::Terrain::TOPCENTER), enumToInt(tl::Terrain::TOPRIGHT)},
+		{enumToInt(tl::Terrain::CENTERLEFT), enumToInt(tl::Terrain::CENTER), enumToInt(tl::Terrain::CENTERRIGHT)},
+		{enumToInt(tl::Terrain::BOTTOMLEFT), enumToInt(tl::Terrain::BOTTOMCENTER), enumToInt(tl::Terrain::BOTTOMRIGHT)}
+	};
+	//this->load();
+	this->tileGrid = {
+		{new sf::Sprite(), new sf::Sprite(), new sf::Sprite()},
+		{new sf::Sprite(), new sf::Sprite(), new sf::Sprite()},
+		{new sf::Sprite(), new sf::Sprite(), new sf::Sprite()}
+	};
+	for (size_t i = 0; i < this->tileGrid.size(); i++) {
+		for (size_t j = 0; j < this->tileGrid[i].size(); j++) {
+			sf::Sprite* tile = this->tileGrid[i][j];
+			sf::Texture texture;
+			texture.create(32, 32);
+            tile->setTexture(texture);
+            tile->setColor(sf::Color::Blue);
+            tile->setPosition(5 + (j * 32) ,5 + (i * 32));
+		}
+	}
+	
+}
 
 //CONSTRUCTOR
-TileMap::TileMap(std::string mapId, TileMapState mapState, int tileSize, 
+TileMap::TileMap(std::string mapId, TileMapState mapState, 
 	std::vector<std::vector<int>> logicGrid, std::vector<std::vector<sf::Sprite*>> tileGrid)
 {
 	this->mapId = mapId;
 	this->mapState = mapState;
-	this->tileSize = tileSize;
 	this->logicGrid = logicGrid;
 	this->tileGrid = tileGrid;
 }
@@ -33,10 +60,11 @@ void TileMap::setMapState(TileMapState mapState)
 {
 	this->mapState = mapState;
 }
-void TileMap::setTileSize(int tileSize)
-{
-	this->tileSize = tileSize;
+template<typename EnumType>
+void TileMap::setLogicTile(int x, int y, EnumType logicTile) {
+	this->logicGrid[x][y] = enumToInt(logicTile);
 }
+
 void TileMap::setLogicGrid(std::vector<std::vector<int>> logicGrid)
 {
 	this->logicGrid = logicGrid;
@@ -58,10 +86,6 @@ const std::string& TileMap::getMapId()
 const TileMapState& TileMap::getMapState()
 {
 	return this->mapState;
-}
-const int& TileMap::getTileSize()
-{
-	return this->tileSize;
 }
 const std::vector<std::vector<int>>& TileMap::getLogicGrid()
 {
@@ -102,12 +126,14 @@ bool TileMap::isLogicGridEmpty()
 {
 	if (this->logicGrid.empty())
 		return true;
+	return false;
 }
 
 bool TileMap::isTileGridEmpty()
 {
 	if (this->tileGrid.empty())
 		return true;
+	return false;
 }
 
 
@@ -121,12 +147,6 @@ void TileMap::load() {
 	// Check if logicGrid is not empty
 	if (this->logicGrid.empty()) {
 		std::cout << "Cannot load the tileGrid (logicGrid is empty)\n";
-		return;
-	}
-
-	// Check if logicGrid has at least one row and one column
-	if (this->logicGrid[0].empty()) {
-		std::cout << "Cannot load the tileGrid (logicGrid has no columns)\n";
 		return;
 	}
 

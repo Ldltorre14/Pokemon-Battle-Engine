@@ -134,5 +134,8 @@
     <ClInclude Include="Source\Utils\spritesheet_parsing.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Types\consts.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

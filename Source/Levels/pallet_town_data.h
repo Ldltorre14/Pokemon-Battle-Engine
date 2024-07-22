@@ -8,7 +8,7 @@
 
 
 
-extern std::vector<std::vector<tl::Terrain>> PALLET_TOWN_LOGIC_GRID; 
+extern std::vector<std::vector<tl::Terrain>> PALLET_TOWN_LOGIC_GRID;
 extern std::vector<std::vector<sf::Sprite*>> PALLET_TOWN_TILE_GRID;
 
 

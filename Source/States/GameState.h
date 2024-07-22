@@ -10,7 +10,7 @@ class GameState :
 {
 private:
     Scene scene;
-    
+
 protected:
 
 public:

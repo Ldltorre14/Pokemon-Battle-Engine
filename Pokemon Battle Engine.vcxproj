@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -192,6 +192,7 @@
     <ClInclude Include="Source\Levels\Level.h" />
     <ClInclude Include="Source\Levels\pallet_town_data.h" />
     <ClInclude Include="Source\Scenes\Scene.h" />
+    <ClInclude Include="Source\Types\consts.h" />
     <ClInclude Include="Source\Types\tiles.h" />
     <ClInclude Include="Source\Types\types.h" />
     <ClInclude Include="Source\Types\ui_types.h" />
@@ -206,6 +207,7 @@
     <ClInclude Include="Source\States\MainMenuState.h" />
     <ClInclude Include="Source\States\State.h" />
     <ClInclude Include="Source\UI Components\Button.h" />
+    <ClInclude Include="Source\Utils\enum_utils.h" />
     <ClInclude Include="Source\Utils\spritesheet_parsing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
