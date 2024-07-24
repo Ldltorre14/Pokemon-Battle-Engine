@@ -36,13 +36,14 @@ public:
 	const std::vector<std::vector<int>>& getLogicGrid();
 	const std::vector<std::vector<sf::Sprite*>>& getTileGrid();
 
-	
+	bool isTileGridEmpty();
+	bool isLogicGridEmpty();
+	bool checkSameGridsDimensions();
 	bool isActive();
 	bool isLoaded();
 	bool isRendered();
-	bool isLogicGridEmpty();
-	bool isTileGridEmpty();
 
+	void resizeTileGrid();
 	void load();
 	void unload();
 	void render(sf::RenderTarget* target);

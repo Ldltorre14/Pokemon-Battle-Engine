@@ -10,12 +10,12 @@ TileMap::TileMap()
 		{enumToInt(tl::Terrain::CENTERLEFT), enumToInt(tl::Terrain::CENTER), enumToInt(tl::Terrain::CENTERRIGHT)},
 		{enumToInt(tl::Terrain::BOTTOMLEFT), enumToInt(tl::Terrain::BOTTOMCENTER), enumToInt(tl::Terrain::BOTTOMRIGHT)}
 	};
-	//this->load();
-	this->tileGrid = {
+	this->load();
+	/*this->tileGrid = {
 		{new sf::Sprite(), new sf::Sprite(), new sf::Sprite()},
 		{new sf::Sprite(), new sf::Sprite(), new sf::Sprite()},
 		{new sf::Sprite(), new sf::Sprite(), new sf::Sprite()}
-	};
+	};*/
 	for (size_t i = 0; i < this->tileGrid.size(); i++) {
 		for (size_t j = 0; j < this->tileGrid[i].size(); j++) {
 			sf::Sprite* tile = this->tileGrid[i][j];
@@ -96,6 +96,27 @@ const std::vector<std::vector<sf::Sprite*>>& TileMap::getTileGrid()
 	return this->tileGrid;
 }
 
+bool TileMap::isTileGridEmpty()
+{
+	if (this->tileGrid.empty())
+		return true;
+	return false;
+}
+
+bool TileMap::isLogicGridEmpty()
+{
+	if (this->logicGrid.empty())
+		return true;
+	return false;
+}
+
+bool TileMap::checkSameGridsDimensions()
+{
+	if ((this->logicGrid.size() == this->tileGrid.size()) && (this->logicGrid[0].size() == this->tileGrid[0].size()) )
+		return true;
+	return false;
+}
+
 
 //Method that checks if the current TileMap's State is ACTIVE (ACTIVE, READY, INACTIVE)
 bool TileMap::isActive()
@@ -122,43 +143,34 @@ bool TileMap::isLoaded() {
 }
 
 
-bool TileMap::isLogicGridEmpty()
-{
-	if (this->logicGrid.empty())
-		return true;
-	return false;
-}
 
-bool TileMap::isTileGridEmpty()
+void TileMap::resizeTileGrid()
 {
-	if (this->tileGrid.empty())
-		return true;
-	return false;
+	if (this->checkSameGridsDimensions()) {
+		std::cout << "Cannot resize because both grids have already the same dimensions\n";
+		return;
+	}
+	else {
+		this->tileGrid.resize(this->logicGrid.size());
+		for (auto& row : this->tileGrid) {
+			row.resize(this->logicGrid[0].size());
+		}
+		std::cout << this->tileGrid.size() << "\n";
+		std::cout << this->tileGrid[0].size() << "\n";
+	}
 }
-
 
 void TileMap::load() {
-	// Check if tileGrid is empty before initializing
-	if (!this->tileGrid.empty()) {
-		std::cout << "Cannot load the tileGrid (Tiles already allocated)\n";
+	if (this->isLogicGridEmpty()) {
+		std::cout << "Cannot load Tilemap (Cannot resize Tile Grid (Logic Grid empty))\n";
+		return;
+	}
+	if (!this->isTileGridEmpty()) {
+		std::cout << "Cannot load Tilemap (Tile Grid already loaded)\n";
 		return;
 	}
 
-	// Check if logicGrid is not empty
-	if (this->logicGrid.empty()) {
-		std::cout << "Cannot load the tileGrid (logicGrid is empty)\n";
-		return;
-	}
-
-	// Check if logicGrid and tileGrid have the same dimensions
-	if (this->tileGrid.size() != this->logicGrid.size()) {
-		std::cout << "Cannot load the tileGrid (logic/tileGrid have different dimensions)\n";
-		return;
-	}
-
-	// Resize tileGrid to match the size of logicGrid
-	this->tileGrid.resize(this->logicGrid.size(), std::vector<sf::Sprite*>(this->logicGrid[0].size(), nullptr));
-
+	this->resizeTileGrid();
 	// Iterate over each element in tileGrid
 	for (size_t i = 0; i < this->tileGrid.size(); i++) {
 		for (size_t j = 0; j < this->tileGrid[i].size(); j++) {
@@ -166,9 +178,9 @@ void TileMap::load() {
 			this->tileGrid[i][j] = new sf::Sprite();
 		}
 	}
-
 	// Print a message indicating the TileMap is loaded into memory
 	std::cout << "TileMap " << mapId << " loaded into memory.\n";
+	
 }
 
 //Method for deallocate the tiles/sprites from the tileGrid
