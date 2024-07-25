@@ -11,6 +11,7 @@ Scene::Scene(ResourceManager* resourceManager)
 	this->spritesheet.setTexture(*this->texture);
 	this->spritesheet.setTextureRect(getTerrainRect(tl::Terrain::TOPLEFTCORNER));
 
+
 	
 
 

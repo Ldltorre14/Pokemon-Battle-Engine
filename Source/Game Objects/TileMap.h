@@ -27,7 +27,8 @@ public:
 	void setMapState(TileMapState mapState);
 	template <typename EnumType>
 	void setLogicTile(int x, int y, EnumType logicTile);
-	void setTile(int x, int y, sf::Sprite* tile);
+	void setTileTexture(int x, int y, sf::Texture* texture);
+	void setTileSprite(int x, int y, sf::Sprite* tile);
 	void setLogicGrid(std::vector<std::vector<int>> logicGrid);
 	void setTileGrid(std::vector<std::vector<sf::Sprite*>> tileGrid);
 
@@ -38,6 +39,7 @@ public:
 
 	bool isTileGridEmpty();
 	bool isLogicGridEmpty();
+	bool areCoordsOutOfBounds(const int &x, const int &y);
 	bool checkSameGridsDimensions();
 	bool isActive();
 	bool isLoaded();
