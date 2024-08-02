@@ -9,10 +9,7 @@ Scene::Scene(ResourceManager* resourceManager)
 	this->resourceManager = resourceManager;
 	this->texture = this->resourceManager->getTexture("Tileset", "Terrains");
 	this->spritesheet.setTexture(*this->texture);
-	this->spritesheet.setTextureRect(getTerrainRect(tl::Terrain::TOPLEFTCORNER));
-
-
-	
+	//this->spritesheet.setTextureRect(getTerrainRect(tl::Terrain::TOPLEFTCORNER));
 
 
 	std::cout << "SCENE INITIALIZED\n";

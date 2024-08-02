@@ -5,12 +5,21 @@ TileMap::TileMap()
 {
 	this->mapId = "empty Id";
 	this->mapState = TileMapState::READY;
+	this->tileSizePx = 32;
+	this->mapWidthPx = 1280;
+	this->mapHeightPx = 720;
+	this->gridSize.x = 1280 / 32;
+	this->gridSize.y = 720 / 32;
+	this->origin.x = 0;
+	this->origin.y = 0;
 	this->logicGrid = { 
 		{enumToInt(tl::Terrain::TOPLEFTCORNER), enumToInt(tl::Terrain::TOPCENTER), enumToInt(tl::Terrain::TOPRIGHT)},
 		{enumToInt(tl::Terrain::CENTERLEFT), enumToInt(tl::Terrain::CENTER), enumToInt(tl::Terrain::CENTERRIGHT)},
 		{enumToInt(tl::Terrain::BOTTOMLEFT), enumToInt(tl::Terrain::BOTTOMCENTER), enumToInt(tl::Terrain::BOTTOMRIGHT)}
 	};
+
 	this->load();
+	
 	for (size_t i = 0; i < this->tileGrid.size(); i++) {
 		for (size_t j = 0; j < this->tileGrid[i].size(); j++) {
 			sf::Sprite* tile = this->tileGrid[i][j];
@@ -25,11 +34,18 @@ TileMap::TileMap()
 }
 
 //CONSTRUCTOR
-TileMap::TileMap(std::string mapId, TileMapState mapState, 
+TileMap::TileMap(std::string mapId, TileMapState mapState, int tileSizePx, int mapWidthPx, int mapHeightPx,
+	sf::Vector2i gridSize, sf::Vector2i origin, sf::Texture* spritesheet,
 	std::vector<std::vector<int>> logicGrid, std::vector<std::vector<sf::Sprite*>> tileGrid)
 {
 	this->mapId = mapId;
 	this->mapState = mapState;
+	this->tileSizePx = tileSizePx;
+	this->mapWidthPx = mapWidthPx;
+	this->mapHeightPx = mapHeightPx;
+	this->gridSize = gridSize;
+	this->origin = origin;
+	this->spritesheet = spritesheet;
 	this->logicGrid = logicGrid;
 	this->tileGrid = tileGrid;
 }
@@ -55,6 +71,52 @@ void TileMap::setMapId(std::string mapId)
 void TileMap::setMapState(TileMapState mapState)
 {
 	this->mapState = mapState;
+}
+
+void TileMap::setTileSizePx(int tileSizePx)
+{
+	this->tileSizePx = tileSizePx;
+}
+
+void TileMap::setMapWidthPx(int mapWidthPx)
+{
+	this->mapWidthPx = mapWidthPx;
+}
+
+void TileMap::setMapHeightPx(int mapHeightPx)
+{
+	this->mapHeightPx = mapHeightPx;
+}
+
+void TileMap::setGridSize(sf::Vector2i gridSize)
+{
+	this->gridSize = gridSize;
+}
+
+void TileMap::setGridSize(int rows, int cols)
+{
+	this->gridSize.x = rows;
+	this->gridSize.y = cols;
+}
+
+void TileMap::setOrigin(sf::Vector2i originCoord)
+{
+	this->origin = originCoord;
+}
+
+void TileMap::setOrigin(int x, int y)
+{
+	this->origin.x = x;
+	this->origin.y = y;
+}
+
+void TileMap::setSpritesheet(sf::Texture* spritesheet)
+{
+	if (!spritesheet) {
+		std::cout << "Cannot set spritesheet (texture is referencing a null ptr)\n";
+		return;
+	}
+	this->spritesheet = spritesheet;
 }
 
 template<typename EnumType>
@@ -130,14 +192,103 @@ const std::string& TileMap::getMapId()
 {
 	return this->mapId;
 }
+
 const TileMapState& TileMap::getMapState()
 {
 	return this->mapState;
 }
+
+const int& TileMap::getTileSizePx()
+{
+	return this->tileSizePx;
+}
+
+const int& TileMap::getMapWidthPx()
+{
+	return this->mapWidthPx;
+}
+
+const int& TileMap::getMapHeightPx()
+{
+	return this->mapHeightPx;
+}
+
+const sf::Vector2i& TileMap::getGridSize()
+{
+	return this->gridSize;
+}
+
+const sf::Vector2i& TileMap::getOrigin()
+{
+	return this->origin;
+}
+
+const sf::Texture* TileMap::getSpritesheet()
+{
+	return nullptr;
+}
+
+template<typename EnumType>
+const EnumType& TileMap::getLogicTile(int x, int y)
+{
+	if (this->isLogicGridEmpty()) {
+		std::cout << "Cannot get Logic Tile (Logic Grid is Empty)\n";
+		return;
+	}
+	
+	if (this->areCoordsOutOfBounds(x, y)) {
+		std::cout << "Cannot get Logic Tile (Coords are Out of Bounds)\n";
+		return;
+	}
+
+	return this->logicGrid[x][y];
+}
+
+const sf::Texture* TileMap::getTileTexture(int x, int y)
+{
+	if (this->isTileGridEmpty()) {
+		std::cout << "Cannot get Tile Texture (Tile Grid is Empty)\n";
+		return nullptr;
+	}
+
+	if (this->areCoordsOutOfBounds(x, y)) {
+		std::cout << "Cannot get Tile Texture (Coords are Out of Bounds)\n";
+		return nullptr;
+	}
+
+	if (!this->tileGrid[x][y]->getTexture()) {
+		std::cout << "Cannot get Tile Texture (texture is referencing a null ptr)\n";
+		return nullptr;
+	}
+
+	return this->tileGrid[x][y]->getTexture();
+}
+
+const sf::Sprite* TileMap::getTileSprite(int x, int y)
+{
+	if (this->isTileGridEmpty()) {
+		std::cout << "Cannot get Tile Sprite (Tile Grid is Empty)\n";
+		return nullptr;
+	}
+
+	if (this->areCoordsOutOfBounds(x, y)) {
+		std::cout << "Cannot get Tile Sprite (Coords are Out of Bounds)\n";
+		return nullptr;
+	}
+
+	if (!this->tileGrid[x][y]) {
+		std::cout << "Cannot get Tile Sprite (sprite is referencing a null ptr)\n";
+		return nullptr;
+	}
+
+	return this->tileGrid[x][y];
+}
+
 const std::vector<std::vector<int>>& TileMap::getLogicGrid()
 {
 	return this->logicGrid;
 }
+
 const std::vector<std::vector<sf::Sprite*>>& TileMap::getTileGrid()
 {
 	return this->tileGrid;

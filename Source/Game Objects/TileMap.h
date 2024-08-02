@@ -14,17 +14,33 @@ class TileMap
 private:
 	std::string mapId;
 	TileMapState mapState;
+	int tileSizePx;
+	int mapWidthPx;
+	int mapHeightPx;
+	sf::Vector2i gridSize;
+	sf::Vector2i origin;
+	sf::Texture* spritesheet;
 	std::vector<std::vector<int>> logicGrid;
 	std::vector<std::vector<sf::Sprite*>> tileGrid;
 
+
 public:
 	TileMap();
-	TileMap(std::string mapId, TileMapState mapState, 
+	TileMap(std::string mapId, TileMapState mapState, int tileSizePx, int mapWidthPx, int mapHeightPx,
+		sf::Vector2i gridSize, sf::Vector2i origin, sf::Texture* spritesheet,
 		std::vector<std::vector<int>> logicGrid, std::vector<std::vector<sf::Sprite*>> tileGrid);
 	~TileMap();
 
 	void setMapId(std::string mapId);
 	void setMapState(TileMapState mapState);
+	void setTileSizePx(int tileSizePx);
+	void setMapWidthPx(int mapWidthPx);
+	void setMapHeightPx(int mapHeightPx);
+	void setGridSize(sf::Vector2i gridSize);
+	void setGridSize(int rows, int cols);
+	void setOrigin(sf::Vector2i originCoord);
+	void setOrigin(int x, int y);
+	void setSpritesheet(sf::Texture* spritesheet);
 	template <typename EnumType>
 	void setLogicTile(int x, int y, EnumType logicTile);
 	void setTileTexture(int x, int y, sf::Texture* texture);
@@ -34,6 +50,16 @@ public:
 
 	const std::string& getMapId();
 	const TileMapState& getMapState();
+	const int& getTileSizePx();
+	const int& getMapWidthPx();
+	const int& getMapHeightPx();
+	const sf::Vector2i& getGridSize();
+	const sf::Vector2i& getOrigin();
+	const sf::Texture* getSpritesheet();
+	template <typename EnumType>
+	const EnumType& getLogicTile(int x, int y);
+	const sf::Texture* getTileTexture(int x, int y);
+	const sf::Sprite* getTileSprite(int x, int y);
 	const std::vector<std::vector<int>>& getLogicGrid();
 	const std::vector<std::vector<sf::Sprite*>>& getTileGrid();
 
@@ -43,7 +69,6 @@ public:
 	bool checkSameGridsDimensions();
 	bool isActive();
 	bool isLoaded();
-	bool isRendered();
 
 	void resizeTileGrid();
 	void load();
